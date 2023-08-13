@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="UTF-8">  
+<title>你的计算力是多少？</title> 
+
+<style> 
+.num{
+font-size: 50px ;
+justify-content: center; 
+align-items:center;
+text-align: center;
+background-color:#f0ff00;
+height:200px;
+width:200px
+}
+#an{
+font-size: 50px ;
+display: flex;
+justify-content: center; 
+align-items:center;
+text-align: center;
+background-color:#f0ff00;
+height:100px;
+width:900px
+}
+#hea{
+font-size: 50px ;
+display: flex;
+justify-content: center; 
+align-items:center;
+text-align: center;
+background-color:#f0ff00;
+height:100px;
+width:900px
+}
+#header{
+font-size: 50px ;
+display: flex;  
+flex-wrap: wrap;  
+justify-content: center; 
+align-items:center;
+text-align: center;
+background-color:#f0ff00;
+height:1200px;
+width:900px
+}
+
+
+#z3{
+font-size: 50px ;
+display: flex;  
+flex-wrap: wrap;  
+justify-content: center; 
+align-items:center;
+text-align: center;
+background-color:#ff00ff;
+height:200px;
+width:800px
+}
+</style>
+</head>
+<body>
+<div id="header"class="di" >
+<div id="bb" class="di">你的计算力是多少？</div>
+<div id="an" class="di"></div>
+<div id="hea" class="di" > </div>
+<div id="num1"class="num">1</div>
+<div id="num2"class="num">2</div>
+<div id="num3"class="num">3</div>
+<div id="num4"class="num">4</div>
+<div id="num5"class="num">5</div>
+<div id="num6"class="num">6</div>
+<div id="num7"class="num">7</div>
+<div id="num8"class="num">8</div>
+<div id="num9"class="num">9</div>
+<div id="num0"class="num">0</div>
+<div id="r0"  class="num">下一题</div>
+<div id="z1"  class="num">提交</div>
+<div id="z3"  class="ks">开始测试</div>
+</div>
+<script>  
+var sum;
+var ans=0;
+var numx;
+var numy;
+var zongshu=0;
+var cuowu=0;
+var totalSeconds = 60;  
+window.onload=function(){
+	codiv();
+};
+function codiv(){
+
+var divs = document.getElementsByClassName("num");  
+    // 循环遍历每个div元素  
+    for (var i = 0; i < divs.length; i++) {  
+		var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);  
+		var randomColor1 = '#' + Math.floor(Math.random() * 16777215).toString(16); 
+		divs[i].style.color = randomColor; 
+		divs[i].style.backgroundColor=randomColor1;
+    } 
+
+
+}
+function generate() {  
+	numx = Math.floor(Math.random() * 10);  
+	numy = Math.floor(Math.random() * 10);  
+	sum = numx + numy;  
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = ";  
+  
+}  
+function div1() {  
+	ans=ans*10+1; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+function div2() {  
+	ans=ans*10+2; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+function div3() {  
+	ans=ans*10+3; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+function div4() {  
+	ans=ans*10+4; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+function div5() {  
+	ans=ans*10+5;
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+function div6() {  
+	ans=ans*10+6; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+
+}  
+function div7() {  
+	ans=ans*10+7; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+
+}  
+function div8() {  
+	ans=ans*10+8; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+
+}  
+function div9() {  
+	ans=ans*10+9; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+
+}  
+function div0() {  
+	ans=ans*10; 
+	document.getElementById("hea").innerHTML = numx + " + " + numy + " = "+ans;  
+}  
+
+function divr() {  
+	ans=0; 
+	generate();
+}  
+function divz() {  
+	if(ans==sum){
+		generate();
+		ans=0;
+		zongshu+=1;
+		document.getElementById("an").innerHTML = " 剩余时间："+totalSeconds ; 
+	}
+	else{
+		cuowu+=1;
+		document.getElementById("an").innerHTML =" 剩余时间："+totalSeconds ; 
+  }
+}  
+function divan() {  
+	
+	alert('开始游戏!');  
+	divt();
+	zongshu=0;
+	generate();
+}  	
+
+let timer=null;
+function divt() { 
+	totalSeconds = 60;
+	document.getElementById("an").innerHTML = "剩余时间："+totalSeconds ; 
+	if(timer===null){
+		timer = setInterval(function() {  
+		totalSeconds--;  
+		document.getElementById("an").innerHTML = "剩余时间："+totalSeconds ; 
+		// 如果时间用完，停止计时器并清除显示  
+		if (totalSeconds <= 0) {  
+			document.getElementById("an").innerHTML = "剩余时间："+totalSeconds ; 
+			clearInterval(timer);  
+			var youxijiesu = "正确：" + zongshu + " " + "错误：" + cuowu;  
+			alert(youxijiesu);
+		}  
+    }, 1000); 
+	}
+	else{
+		clearInterval(timer);  
+		timer = setInterval(function() {  
+			totalSeconds--;  
+			document.getElementById("an").innerHTML = "剩余时间："+totalSeconds ; 
+		// 如果时间用完，停止计时器并清除显示  
+			if (totalSeconds <= 0) {  
+				document.getElementById("an").innerHTML = "剩余时间："+totalSeconds ; 
+				clearInterval(timer);  
+				var youxijiesu = "正确：" + zongshu + " " + "错误：" + cuowu;  
+				alert(youxijiesu);
+			}  
+		}, 1000); 
+	}	
+}  
+document.getElementById("z1").addEventListener("click", divz); 
+document.getElementById("r0").addEventListener("click", divr); 
+document.getElementById("z3").addEventListener("click", divan); 
+document.getElementById("num1").addEventListener("click", div1);   
+document.getElementById("num2").addEventListener("click", div2);   
+document.getElementById("num3").addEventListener("click", div3);   
+document.getElementById("num4").addEventListener("click", div4);   
+document.getElementById("num5").addEventListener("click", div5);   
+document.getElementById("num6").addEventListener("click", div6);   
+document.getElementById("num7").addEventListener("click", div7);   
+document.getElementById("num8").addEventListener("click", div8);   
+document.getElementById("num9").addEventListener("click", div9);   
+document.getElementById("num0").addEventListener("click", div0);  
+</script>  
+</body>
+</html>
