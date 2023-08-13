@@ -87,6 +87,9 @@ var numy;
 var zongshu=0;
 var cuowu=0;
 var totalSeconds = 60;  
+var audio = new Audio('Coin.mp3');  
+var audio1 = new Audio('Disconnect.mp3');  
+	
 window.onload=function(){
 	codiv();
 };
@@ -161,12 +164,14 @@ function divr() {
 }  
 function divz() {  
 	if(ans==sum){
+		audio.play();
 		generate();
 		ans=0;
 		zongshu+=1;
 		document.getElementById("an").innerHTML = " 剩余时间："+totalSeconds ; 
 	}
 	else{
+		audio1.play();
 		cuowu+=1;
 		document.getElementById("an").innerHTML =" 剩余时间："+totalSeconds ; 
   }
